@@ -8,4 +8,4 @@ window.FIREBASE_CONFIG = {
   measurementId: "G-M9X4PKVR90"
 };
 
-window.ALLOWED_EMAILS = [];
+window.ALLOWED_EMAILS = [zabutooooon@gmail.com];
