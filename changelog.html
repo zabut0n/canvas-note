@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>変更履歴 - Canvas Note</title>
+<script>
+  try {
+    const t = JSON.parse(localStorage.getItem('theme') || '"auto"');
+    const dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  } catch (e) {}
+</script>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=38">
+<style>
+  html { height: auto; overflow-y: auto; }
+  body { height: auto; overflow: visible; overscroll-behavior: auto; -webkit-user-select: text; user-select: text; touch-action: pan-y; }
+  main { max-width: 640px; margin: 0 auto; padding: calc(24px + var(--safe-t)) 16px calc(40px + var(--safe-b)); }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .back { display: inline-block; margin-bottom: 16px; color: var(--accent); text-decoration: none; }
+  h2 { font-size: 13px; color: var(--muted); margin: 28px 0 6px; font-weight: 600; }
+  .log { list-style: none; margin: 16px 0 0; padding: 0; }
+  .log li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .log b { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="./">← ノートに戻る</a>
+  <h1>変更履歴 <small style="font-size:12px;color:var(--muted);font-weight:400">現在 v38</small></h1>
+
+  <ul class="log">
+    <li><b>v38</b>: 配布用 zip と構築手順（README）を追加。許可するアカウントを firebase-config.js で設定できるように、Firebase なしでも使えるように</li>
+    <li><b>v37</b>: 許可したアカウント以外でもログインして使えるように（クラウドには保存せず、この端末だけに保存）</li>
+    <li><b>v36</b>: ログイン画面を追加（許可したアカウントでログインしないと使えない）</li>
+    <li><b>v35</b>: 回転で 30°・45°・60°・120° など（30° と 45° の倍数）にも吸い付くように、回転中に角度を表示</li>
+    <li><b>v34</b>: 投げ縄で選んだ線を回転できるように（枠の上のまるいつまみ。Shift で 15° ずつ、90° ごとに吸い付く。画像を含むときは回せない）</li>
+    <li><b>v33</b>: テンプレート機能を追加（投げ縄で選んだ線を保存して、ツールバーから一発で呼び出す。画像は入れられない）</li>
+    <li><b>v32</b>: 更新がすぐ反映されるように（ページを毎回サーバーに確認）、メニューのリンクから版番号を外す</li>
+    <li><b>v31</b>: メニューが画面に収まらないときにスクロールできるように、変更履歴ページのスクロールを修正</li>
+    <li><b>v30</b>: 変更履歴を「vXX: 変更内容」の 1 行形式に</li>
+    <li><b>v29</b>: 変更履歴をバージョンごとに整理</li>
+    <li><b>v28</b>: メニューの「変更履歴」リンクと、変更履歴ページにバージョン番号を表示</li>
+    <li><b>v27</b>: 変更履歴ページを追加（「…」メニューの一番下から）</li>
+    <li><b>v26</b>: 範囲を選択しているときは、選択した部分だけを PNG で書き出せるように（未選択なら今までどおり全体）</li>
+    <li><b>v25</b>: ペンの調整：浮かせたときと軽く書いたときの筆圧を測って自動で合わせる</li>
+    <li><b>v24</b>: ペン先が実際に触れるまで入力を無視するように</li>
+    <li><b>v23</b>: ペンの手ぶれを抑える補正を追加</li>
+    <li><b>v22</b>: フォルダを入れ子にできるように</li>
+    <li><b>v21</b>: ボード一覧の下にクラウドの使用量を表示</li>
+    <li><b>v20</b>: PDF ごとにクラウドへ保存するか選べるように、PDF は 1 つのまとまりとして移動</li>
+    <li><b>v19</b>: 画像と PDF をキャンバスに取り込めるように</li>
+    <li><b>v18</b>: オフラインでも使えるように（Service Worker、同期の再試行、安全な再接続）</li>
+    <li><b>v17</b>: ボードのフォルダ分け、自分で作った空のボードも残る</li>
+    <li><b>v16</b>: Firestore の使用量を削減</li>
+    <li><b>v15</b>: タイルキャッシュで、移動・拡大縮小をなめらかに</li>
+    <li><b>v14</b>: 大きなボードでも書き心地を維持</li>
+    <li><b>v13</b>: 媒介変数の定規 x = f(t), y = g(t) を追加</li>
+    <li><b>v12</b>: ペン・蛍光ペン・消しゴムの太さスライダー</li>
+    <li><b>v11</b>: 筆圧の線をなめらかに、背景の線の濃さを調整可能に</li>
+    <li><b>v10</b>: 筆圧のオン/オフ切り替え、編集を即保存</li>
+    <li><b>v9</b>: 関数定規：x と y の式（円・円錐曲線など）</li>
+    <li><b>v8</b>: 投げ縄の選択範囲をハンドルで拡大縮小（線の太さは維持）</li>
+    <li><b>v7</b>: 投げ縄：触れた線を選択、ダークモード</li>
+    <li><b>v6</b>: 直線定規をグリッドにスナップ、関数定規で |x| に対応</li>
+    <li><b>v5</b>: 関数定規の自由入力（キャンバスに固定）</li>
+    <li><b>v4</b>: ファイルにバージョン番号を付け、更新時に古いキャッシュが混ざらないように</li>
+    <li><b>v1〜v3</b>: Canvas Note 公開：無限キャンバスの手書きノート、Google ログインによるクラウド同期（Firebase）、関数定規（y = ax^n、log、a^x）</li>
+  </ul>
+</main>
+</body>
+</html>
